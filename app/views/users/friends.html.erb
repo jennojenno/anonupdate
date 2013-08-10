@@ -20,6 +20,7 @@ About me:
 
 <p>
 
+<b>My Updates</b>
 <table>
 <% @updates.each do |x| %>
   <tr>
@@ -28,27 +29,30 @@ About me:
 <% end %>
 </table>
 
-<p>
+<p><b>My Friends</b>
 <table>
 <% @registered_friends.each do |x| %>
   <tr>
     <td><%= x.friend_id %> </td>
     <td><%= User.find(x.friend_id).name %> </td>
     <td><%= User.find(x.friend_id).uid %> </td>
-    <%# binding.pry %>
+    
   </tr>
 <% end %>
 </table>
 
-<%= User.findfriends %>
+<%= @friendinsert = User.findfriends(current_user.id) %>
+<% @friendarray  = [] %>
+<% @friendarray << @friendinsert %> friendarray
+<% @friendarray.flatten! %>
 
-<p>
+<p><b>My Friends' Updates</b>
 <table>
+  <% @friendupdates = Update.where("user_id" => @friendarray) %>
 <% @friendupdates.each do |x| %>
   <tr>
     <td><%= x.myupdate %> </td>
     <td><%= x.created_at %> </td>
-    <%# binding.pry %>
   </tr>
 <% end %>
 </table>
