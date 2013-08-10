@@ -41,10 +41,10 @@ About me:
 <% end %>
 </table>
 
-<%= @friendinsert = User.findfriends(current_user.id) %>
+<% @friendinsert = User.findfriends(current_user.id) %>
 <% @friendarray  = [] %>
-<% @friendarray << @friendinsert %> friendarray
-<% @friendarray.flatten! %>
+<% @friendarray << @friendinsert %>
+<%= @friendarray.flatten! %>
 
 <p><b>My Friends' Updates</b>
 <table>

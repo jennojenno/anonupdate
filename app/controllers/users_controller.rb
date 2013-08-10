@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     if current_user == nil
       redirect_to root_path, notice: "Sign up or login first!"
     elsif current_user.provider == "facebook"
-      @graph = Koala::Facebook::API.new("CAACEdEose0cBAGEBmxXHafQN4CzKNBC1UuxKZB4E10Ya7KBfgT8er4TLGtrBs1Hr3xDo3j2jbeWtgOjOBsequkwvkSZCkZAfGkt5un5JSkZCTZCKMiZBUtRNA1VZB97IOvCdnjegkE2uCYLBZAPEp5aNKYsuzJqZCyfAZD")
+      @graph = Koala::Facebook::API.new("CAACEdEose0cBAGrZAGUsTZAUXW9zkqHgtM4ZBrHB1XgGwyXyZAyRAyO6Nuf20ilDotR5BVGZBnpGitOw7vPmCDv5wr3kEF51cMxA9wCv3rB0EJB3EVMsJGix97UAOVqCPconjgUr3kjko8p2dLGqerQ20rsz5nO0ZD")
 
       @profile = @graph.get_object("me")
       @friends = @graph.get_connections("me", "friends")

@@ -28,6 +28,8 @@ gem "koala", "~> 1.7.0rc1"
 gem 'better_errors'
 gem "binding_of_caller"
 gem 'pry'
+gem 'bootstrap-sass', '~> 2.1.1.0'
+gem 'bootswatch-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
