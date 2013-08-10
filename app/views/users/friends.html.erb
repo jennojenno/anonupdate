@@ -1,0 +1,54 @@
+User's Friends Page
+
+About me: 
+<%= @profile %>
+
+<table>
+  <tr>
+    <th>ID #</th>
+    <th>Name</th>
+  </tr>
+
+<% @friends.each do |x| %>
+  <tr>
+    <td><%= x["id"] %> </td>
+    <td><%= x["name"] %> </td>
+  </tr>
+<% end %>
+
+</table>
+
+<p>
+
+<table>
+<% @updates.each do |x| %>
+  <tr>
+    <td><%= x.myupdate %> </td>
+  </tr>
+<% end %>
+</table>
+
+<p>
+<table>
+<% @registered_friends.each do |x| %>
+  <tr>
+    <td><%= x.friend_id %> </td>
+    <td><%= User.find(x.friend_id).name %> </td>
+    <td><%= User.find(x.friend_id).uid %> </td>
+    <%# binding.pry %>
+  </tr>
+<% end %>
+</table>
+
+<%= User.findfriends %>
+
+<p>
+<table>
+<% @friendupdates.each do |x| %>
+  <tr>
+    <td><%= x.myupdate %> </td>
+    <td><%= x.created_at %> </td>
+    <%# binding.pry %>
+  </tr>
+<% end %>
+</table>
