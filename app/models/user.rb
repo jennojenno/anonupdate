@@ -10,14 +10,23 @@ class User < ActiveRecord::Base
   has_many :updates 
   has_many :friends
 
-  def self.findfriends(id)
+  def findfriends
     @friendarray = []
-    @registered_friends = Friend.where("user_id" => id)
+    return @registered_friends
     @registered_friends.each do |x|
-      @friendarray << x.friend_id
+      @friendarray << @friendinsert
     end 
-    return @friendarray
+    @friendarray.flatten!
   end 
+
+  # def self.findfriends(id)
+  #   @friendarray = []
+  #   @registered_friends = Friend.where("user_id" => id)
+  #   @registered_friends.each do |x|
+  #     @friendarray << x.friend_id
+  #   end
+  #   return @friendarray
+  # end
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first

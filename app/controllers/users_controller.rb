@@ -5,11 +5,14 @@ class UsersController < ApplicationController
 
   def friends
     @user = current_user
+    @friendinsert = current_user.findfriends
+    @registered_friends = Friend.where("user_id" => current_user.id)
+    return @friendinsert
 
     if current_user == nil
       redirect_to root_path, notice: "Sign up or login first!"
     elsif current_user.provider == "facebook"
-      @graph = Koala::Facebook::API.new("CAACEdEose0cBAGrZAGUsTZAUXW9zkqHgtM4ZBrHB1XgGwyXyZAyRAyO6Nuf20ilDotR5BVGZBnpGitOw7vPmCDv5wr3kEF51cMxA9wCv3rB0EJB3EVMsJGix97UAOVqCPconjgUr3kjko8p2dLGqerQ20rsz5nO0ZD")
+      @graph = Koala::Facebook::API.new("CAACEdEose0cBAPl7or37ljeIRnZCLLjTf421dDs0hYCuUwnM2yC3UoNJt6eOhZATuSatTrOfEiHGfDdZBwnJD9ZCxR5O8G0Exr4gIDkZA83wlD53mFtTxAlVujwwlHG1BIDteJ6CiGlXp1zRZARsB0nZCnXYKxNUnEZD")
 
       @profile = @graph.get_object("me")
       @friends = @graph.get_connections("me", "friends")
