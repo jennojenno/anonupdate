@@ -41,14 +41,14 @@ About me:
 <% end %>
 </table>
 
-<% @friendinsert = User.findfriends(current_user.id) %>
-<% @friendarray  = [] %>
-<% @friendarray << @friendinsert %>
-<%= @friendarray.flatten! %>
-
+<%# @friendinsert = User.findfriends(current_user.id) %>
+<%# @friendarray  = [] %>
+<%# @friendarray << @friendfinder %>
+<%# @friendarray.flatten! %>
+<%# binding.pry %>
 <p><b>My Friends' Updates</b>
 <table>
-  <% @friendupdates = Update.where("user_id" => @friendarray) %>
+<% @friendupdates = Update.where("user_id" => @friendarray) %>
 <% @friendupdates.each do |x| %>
   <tr>
     <td><%= x.myupdate %> </td>

@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
     @registered_friends.each do |x|
       @friendarray << x.friend_id
     end 
-    return @friendarray
+    @friendarray
   end 
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
