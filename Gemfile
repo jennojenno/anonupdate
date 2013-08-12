@@ -25,11 +25,25 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem "koala", "~> 1.7.0rc1"
-gem 'better_errors'
-gem "binding_of_caller"
-gem 'pry'
 gem 'bootstrap-sass', '~> 2.1.1.0'
 gem 'bootswatch-rails'
+
+group :test, :development do 
+  gem 'factory_girl_rails'
+  gem 'annotate'
+  gem 'faker'
+  #gem 'better_errors'
+  gem "binding_of_caller"
+
+  gem 'pry-rails'
+  gem 'pry-debugger'
+  gem 'pry-stack_explorer'
+end 
+
+group :test do 
+  gem 'shoulda-matchers'
+  gem 'rspec-rails'
+end 
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
