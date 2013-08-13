@@ -1,9 +1,16 @@
 require 'spec_helper'
 
 describe User do
+
+  before do 
+    @user = User.create(:name => 'Jon')
+    @myupdate = Update.new
+    @myupdate.myupdate = "Hello world"
+    @myupdate.user_id = @user.id
+  end 
+
   it 'exists' do
-    user = User.create
-    expect(user).to_not be_nil
+    expect(@user).to_not be_nil
   end
 
   context 'associations' do 
@@ -11,14 +18,18 @@ describe User do
     it {should have_many(:updates)}
   end 
 
-  it 'can create an update' do 
-    @myupdate = Update.new
-    @myupdate.myupdate = "Hello world"
-    @myupdate.save
-  end    
+  # it 'can create an update' do 
+  #   @myupdate = Update.new
+  #   @myupdate.myupdate = "Hello world"
+  #   @myupdate.user_id = @user.id
+  # end    
 
-  it 'has an update associated with my id' do 
-    puts subject
-    expect (@myupdate.user_id).to eq(1)
-  end  
+  it 'should have an update associated with it' do 
+    updatecount = Update.where("user_id" => @myupdate.id)
+    updatecount.count.should == 1
+  end 
+
+  it 'should know what class it is' do 
+    @user.class.should == User
+  end 
 end
